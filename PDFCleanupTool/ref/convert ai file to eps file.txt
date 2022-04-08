@@ -1,0 +1,2 @@
+gs -dNOPAUSE -dBATCH -sDEVICE=eps2write -sOutputFile=out.eps input.ai
+gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=out.pdf input.ai

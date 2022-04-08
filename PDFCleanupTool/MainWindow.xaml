@@ -1,0 +1,41 @@
+﻿<Window x:Class="PDFCleanupTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PDFCleanupTool"
+        mc:Ignorable="d"
+        Title="PDF Cleanup Tool" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight" Width="523.443" Height="439.865">
+    <Window.Resources>
+        <DataTemplate x:Key="ListBoxFileDataTemplate">
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="{Binding FileName}" Margin="3" />
+                <TextBlock Text=">>" Margin="3" />
+                <TextBlock Text="{Binding Status}" Margin="3" Foreground="{Binding Color}" FontWeight="Bold" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Button x:Name="bttnOk" Content="Ok" Margin="419,375,11,10" Width="87" Height="26" Click="bttnOk_Click"/>
+        <Button x:Name="bttnRemoveSign" Content="Remove Sign" HorizontalAlignment="Left" Margin="326,375,0,10" Width="88" Height="26" Click="bttnRemoveSign_Click">
+            <Button.ToolTip>
+                <ToolTip>Removes sign requirement for the pdf, removes digital signature</ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <ListBox x:Name="fileListBox" Margin="10,10,8,49" ItemTemplate="{DynamicResource ListBoxFileDataTemplate}" Drop="ListBox_Drop" AllowDrop="True" Width="499" Height="260"/>
+        <Label x:Name="userHintLabel" Content="Drop and Drop the pdf files" Margin="157,119,177,174" Width="183" Height="26"/>
+        <ProgressBar x:Name="wrkProgress" Margin="10,302,11,41" Width="496" Height="29" Value="-1"/>
+        <Label x:Name="progressLbl" Content="" Margin="41,304,246,41" Height="27" Width="230"/>
+        <Button x:Name="bttnRemovePassword" Content="Remove Password" Margin="209,375,196,10" Height="26" Click="bttnRemovePassword_Click" >
+            <Button.ToolTip>
+                <ToolTip>removes the password requirement for edit / print etc</ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="bttnClear" Content="Clear" Margin="129,375,313,10" RenderTransformOrigin="1.03,0.327" Width="75" Height="26" Click="bttnClear_Click"/>
+        <CheckBox x:Name="chkPasswordFile" Content="Show Password Form" Margin="326,353,11,41">
+            <CheckBox.ToolTip>
+                <ToolTip>If the pdf is password locked for edit or other things sometime we need to provide exact password to remove it</ToolTip>
+            </CheckBox.ToolTip>
+        </CheckBox>
+    </Grid>
+</Window>
